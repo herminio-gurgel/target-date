@@ -4,7 +4,7 @@ namespace Bank;
 
 use DateTimeImmutable;
 
-class InterestRate
+class TargetDate
 {
     private static $depositDate;
     private $amountMoney;
@@ -43,6 +43,18 @@ class InterestRate
     public static function getDepositDate()
     {
         return self::$depositDate;
+    }
+
+    public function dateNumberDays()
+    {
+        $currentAmount = $this->amountMoney;
+
+        for ($numberDays = 0; $currentAmount < $this->desiredAmount; $numberDays++) {
+            $income = (($currentAmount / 100) * $this->interestRate) / 360;
+            $currentAmount += $income;
+        }
+
+        return date('Y-m-d', strtotime('2016-01-01' . '+ ' . $numberDays . ' ' . 'days'));
     }
 
 }
