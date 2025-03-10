@@ -4,17 +4,45 @@ This is a coding challenge posted on the [CodeWars](https://www.codewars.com/kat
 In addition to completing the challenge, I also implemented unit tests with PHPUnit to ensure code quality, using
 techniques like Test-Driven Development (TDD) and Baby Steps.
 
+## Prerequisites
+
+This project uses [Composer](https://getcomposer.org/) for dependency management and [PHPUnit 9.6](https://phpunit.de/)
+for testing, with **PHP 7.4** as the required PHP version.
+
+Depending on your PHP version, you may encounter deprecated warnings, but the tests should still run correctly. You can
+verify compatibility with the appropriate PHP version
+at [PHPUnit Supported Versions](https://phpunit.de/supported-versions.html).
+
+## Getting Started
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/herminio-gurgel/target-date
+```
+
+2. **Navigate to the project directory**:
+
+```bash
+cd target-date
+```
+
+3. **Install PHP dependencies**:
+
+```bash
+cd composer install
+```
+
+4. **Run the test suite:**
+
+```bash
+.\vendor\bin\phpunit tests --color
+```
+
 ## Description
 
 You have an amount of money `a0 > 0` and you deposit it with an interest rate of `p percent divided by 360` per day on
 the `1st of January 2016`. You want to have an amount `a >= a0`.
-
-## Prerequisites
-
-This project uses [Composer](https://getcomposer.org/) for dependency management and [PHPUnit 9.6](https://phpunit.de/) for testing, with **PHP 7.4** as the required PHP version.
-
-Depending on your PHP version, you may encounter deprecated warnings, but the tests should still run correctly. You can verify compatibility with the appropriate PHP version at [PHPUnit Supported Versions](https://phpunit.de/supported-versions.html).
-
 
 ## **Task:**
 
