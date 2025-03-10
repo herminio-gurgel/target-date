@@ -53,7 +53,7 @@ class TargetDate
             $currentAmount += ($currentAmount * $this->interestRate) / 36000;
         }
 
-        return date('Y-m-d', strtotime('2016-01-01' . '+ ' . $numberDays . ' ' . 'days'));
+        return date('Y-m-d', strtotime("2016-01-01 + {$numberDays} days"));
     }
 
 }
