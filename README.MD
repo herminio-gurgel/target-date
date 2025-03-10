@@ -9,6 +9,13 @@ techniques like Test-Driven Development (TDD) and Baby Steps.
 You have an amount of money `a0 > 0` and you deposit it with an interest rate of `p percent divided by 360` per day on
 the `1st of January 2016`. You want to have an amount `a >= a0`.
 
+## Prerequisites
+
+This project uses [Composer](https://getcomposer.org/) for dependency management and [PHPUnit 9.6](https://phpunit.de/) for testing, with **PHP 7.4** as the required PHP version.
+
+Depending on your PHP version, you may encounter deprecated warnings, but the tests should still run correctly. You can verify compatibility with the appropriate PHP version at [PHPUnit Supported Versions](https://phpunit.de/supported-versions.html).
+
+
 ## **Task:**
 
 The function `date_nb_days` (or dateNbDays...) with parameters `a0, a, p` will return, as a string, the date on which
