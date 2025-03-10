@@ -50,8 +50,7 @@ class TargetDate
         $currentAmount = $this->amountMoney;
 
         for ($numberDays = 0; $currentAmount < $this->desiredAmount; $numberDays++) {
-            $income = (($currentAmount / 100) * $this->interestRate) / 360;
-            $currentAmount += $income;
+            $currentAmount += ($currentAmount * $this->interestRate) / 36000;
         }
 
         return date('Y-m-d', strtotime('2016-01-01' . '+ ' . $numberDays . ' ' . 'days'));
