@@ -1,7 +1,7 @@
 Escaped mutants:
 ================
 
-1) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:53    [M] LessThan
+1) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:52    [M] LessThan
 
 --- Original
 +++ New
@@ -14,12 +14,14 @@ Escaped mutants:
              $currentAmount += $currentAmount * $this->interestRate / 36000.0;
          }
          return date('Y-m-d', strtotime("2016-01-01 + {$numberDays} days"));
+     }
+ }
 
 
 Timed Out mutants:
 ==================
 
-1) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:54    [M] Assignment
+1) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:53    [M] Assignment
 
 --- Original
 +++ New
@@ -33,10 +35,9 @@ Timed Out mutants:
          return date('Y-m-d', strtotime("2016-01-01 + {$numberDays} days"));
      }
  }
- //        $numberDays = ceil((log($this->desiredAmount) - log($this->amountMoney)) / log(1 + $this->interestRate / 36000.0));
 
 
-2) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:54    [M] PlusEqual
+2) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:53    [M] PlusEqual
 
 --- Original
 +++ New
@@ -50,7 +51,6 @@ Timed Out mutants:
          return date('Y-m-d', strtotime("2016-01-01 + {$numberDays} days"));
      }
  }
- //        $numberDays = ceil((log($this->desiredAmount) - log($this->amountMoney)) / log(1 + $this->interestRate / 36000.0));
 
 
 Skipped mutants:
