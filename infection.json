@@ -9,8 +9,7 @@
         "@default": true
     },
     "logs": {
-        "text": "infection-log.txt",
-        "html": "infection-report.html"
+        "text": "infection-log.txt"
     },
     "timeout": 1
 }
