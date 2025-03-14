@@ -23,10 +23,16 @@ class TargetDateTest extends TestCase
         new TargetDate(0, 101, 0.98);
     }
 
-    public function test_desired_amount_should_be_bigger_than_amount_of_money()
+    public function test_desired_amount_should_be_equals_or_bigger_than_amount_money()
     {
+        $equals = new TargetDate(100, 100, 0.98);
+        $bigger = new TargetDate(100, 101, 0.98);
+
+        $this->assertInstanceOf(TargetDate::class, $equals);
+        $this->assertInstanceOf(TargetDate::class, $bigger);
+
         $this->expectException(DomainException::class);
-        $this->expectExceptionMessage('Desired amount should be bigger than amount of money');
+        $this->expectExceptionMessage('Desired amount should be bigger or equal than amount of money');
         new TargetDate(100, 99, 0.98);
     }
 

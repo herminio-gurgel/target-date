@@ -1,22 +1,7 @@
 Escaped mutants:
 ================
 
-1) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:30    [M] GreaterThan
-
---- Original
-+++ New
-@@ @@
-         if ($amountMoney <= 0) {
-             throw new \DomainException('Amount of money should be bigger than zero');
-         }
--        if ($amountMoney > $desiredAmount) {
-+        if ($amountMoney >= $desiredAmount) {
-             throw new \DomainException('Desired amount should be bigger than amount of money');
-         }
-         if ($interestRate <= 0) {
-
-
-2) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:52    [M] LessThan
+1) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:53    [M] LessThan
 
 --- Original
 +++ New
@@ -26,49 +11,15 @@ Escaped mutants:
          $currentAmount = $this->amountMoney;
 -        for ($numberDays = 0; $currentAmount < $this->desiredAmount; $numberDays++) {
 +        for ($numberDays = 0; $currentAmount <= $this->desiredAmount; $numberDays++) {
-             $currentAmount += $currentAmount * $this->interestRate / 36000;
+             $currentAmount += $currentAmount * $this->interestRate / 36000.0;
          }
          return date('Y-m-d', strtotime("2016-01-01 + {$numberDays} days"));
-     }
- }
-
-
-3) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:53    [M] DecrementInteger
-
---- Original
-+++ New
-@@ @@
-     {
-         $currentAmount = $this->amountMoney;
-         for ($numberDays = 0; $currentAmount < $this->desiredAmount; $numberDays++) {
--            $currentAmount += $currentAmount * $this->interestRate / 36000;
-+            $currentAmount += $currentAmount * $this->interestRate / 35999;
-         }
-         return date('Y-m-d', strtotime("2016-01-01 + {$numberDays} days"));
-     }
- }
-
-
-4) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:53    [M] IncrementInteger
-
---- Original
-+++ New
-@@ @@
-     {
-         $currentAmount = $this->amountMoney;
-         for ($numberDays = 0; $currentAmount < $this->desiredAmount; $numberDays++) {
--            $currentAmount += $currentAmount * $this->interestRate / 36000;
-+            $currentAmount += $currentAmount * $this->interestRate / 36001;
-         }
-         return date('Y-m-d', strtotime("2016-01-01 + {$numberDays} days"));
-     }
- }
 
 
 Timed Out mutants:
 ==================
 
-1) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:53    [M] Assignment
+1) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:54    [M] Assignment
 
 --- Original
 +++ New
@@ -76,15 +27,16 @@ Timed Out mutants:
      {
          $currentAmount = $this->amountMoney;
          for ($numberDays = 0; $currentAmount < $this->desiredAmount; $numberDays++) {
--            $currentAmount += $currentAmount * $this->interestRate / 36000;
-+            $currentAmount = $currentAmount * $this->interestRate / 36000;
+-            $currentAmount += $currentAmount * $this->interestRate / 36000.0;
++            $currentAmount = $currentAmount * $this->interestRate / 36000.0;
          }
          return date('Y-m-d', strtotime("2016-01-01 + {$numberDays} days"));
      }
  }
+ //        $numberDays = ceil((log($this->desiredAmount) - log($this->amountMoney)) / log(1 + $this->interestRate / 36000.0));
 
 
-2) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:53    [M] PlusEqual
+2) D:\45384\Desktop\Projetos\target-date\src\TargetDate.php:54    [M] PlusEqual
 
 --- Original
 +++ New
@@ -92,12 +44,13 @@ Timed Out mutants:
      {
          $currentAmount = $this->amountMoney;
          for ($numberDays = 0; $currentAmount < $this->desiredAmount; $numberDays++) {
--            $currentAmount += $currentAmount * $this->interestRate / 36000;
-+            $currentAmount -= $currentAmount * $this->interestRate / 36000;
+-            $currentAmount += $currentAmount * $this->interestRate / 36000.0;
++            $currentAmount -= $currentAmount * $this->interestRate / 36000.0;
          }
          return date('Y-m-d', strtotime("2016-01-01 + {$numberDays} days"));
      }
  }
+ //        $numberDays = ceil((log($this->desiredAmount) - log($this->amountMoney)) / log(1 + $this->interestRate / 36000.0));
 
 
 Skipped mutants:

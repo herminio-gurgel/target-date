@@ -28,7 +28,7 @@ class TargetDate
         }
 
         if ($amountMoney > $desiredAmount) {
-            throw new \DomainException('Desired amount should be bigger than amount of money');
+            throw new \DomainException('Desired amount should be bigger or equal than amount of money');
         }
 
         if ($interestRate <= 0) {
@@ -50,7 +50,7 @@ class TargetDate
         $currentAmount = $this->amountMoney;
 
         for ($numberDays = 0; $currentAmount < $this->desiredAmount; $numberDays++) {
-            $currentAmount += ($currentAmount * $this->interestRate) / 36000;
+            $currentAmount += ($currentAmount * $this->interestRate) / 36000.0;
         }
 
         return date('Y-m-d', strtotime("2016-01-01 + {$numberDays} days"));
