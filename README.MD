@@ -1,17 +1,19 @@
 # Target Date
 
 This is a coding challenge posted on the [CodeWars](https://www.codewars.com/kata/569218bc919ccba77000000b/php) website.
-In addition to completing the challenge, I also implemented unit tests with PHPUnit to ensure code quality, using
-techniques like Test-Driven Development (TDD) and Baby Steps.
+In addition to completing the challenge, I also implemented unit tests with PHPUnit and mutation tests with Infection to
+ensure code quality, using techniques like Test-Driven Development (TDD) and Baby Steps.
 
 ## Prerequisites
 
-This project uses [Composer](https://getcomposer.org/) for dependency management and [PHPUnit 9.6](https://phpunit.de/)
-for testing, with **PHP 7.4** as the required PHP version.
+This project uses [Composer](https://getcomposer.org/) for dependency management, [PHPUnit 9.6](https://phpunit.de/)
+for unit testing and [Infection 0.26.6](https://infection.github.io/) for mutation testing with **PHP 7.4** as the
+required PHP version with Xdebug, phpdbg, or pcov enabled.
 
 Depending on your PHP version, you may encounter deprecated warnings, but the tests should still run correctly. You can
 verify compatibility with the appropriate PHP version
-at [PHPUnit Supported Versions](https://phpunit.de/supported-versions.html).
+at [PHPUnit Supported Versions](https://phpunit.de/supported-versions.html)
+and [Infection Installation](https://infection.github.io/guide/installation.html).
 
 ## Getting Started
 
@@ -33,10 +35,16 @@ cd target-date
 cd composer install
 ```
 
-4. **Run the test suite:**
+4. **Run the unit test suite:**
 
 ```bash
-.\vendor\bin\phpunit tests --color
+composer phpunit
+```
+
+5. **Run the mutation test suite:**
+
+```bash
+composer infection
 ```
 
 ## Description
@@ -62,3 +70,14 @@ you have just reached `a`.
 - Don't forget to take the rate for a day to be p divided by 36000 since banks consider that there are `360` days in a
   year.
 - You have: `a0 > 0, p% > 0, a >= a0`
+
+## **Known Issues**
+
+- One mutant escapes the test, and two others fail due to timeout.
+  These errors are false positives caused by the for loop. However, they suggest that a more efficient solution for this
+  logic exists.
+
+## **Future Implementations and Fixes**
+
+- Create a Docker image to run everything pre-configured.
+- Refactor the for loop logic to use logarithms for better performance.
