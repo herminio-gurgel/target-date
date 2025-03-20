@@ -1,19 +1,21 @@
+![Docker Ready](https://img.shields.io/badge/docker-ready-blue)
+![PHP Version](https://img.shields.io/badge/php-7.4-blue)
+
 # Target Date
 
-This is a coding challenge posted on the [CodeWars](https://www.codewars.com/kata/569218bc919ccba77000000b/php) website.
+This is a coding challenge posted on the [CodeWars](https://www.codewars.com/kata/569218bc919ccba77000000b/php)
+website.  
 In addition to completing the challenge, I also implemented unit tests with PHPUnit and mutation tests with Infection to
 ensure code quality, using techniques like Test-Driven Development (TDD) and Baby Steps.
 
+I've also added a **Dockerfile** pre-configured with everything necessary to run the project seamlessly, including PHP,
+Composer, PHPUnit, and Infection.
+
 ## Prerequisites
 
-This project uses [Composer](https://getcomposer.org/) for dependency management, [PHPUnit 9.6](https://phpunit.de/)
-for unit testing and [Infection 0.26.6](https://infection.github.io/) for mutation testing with **PHP 7.4** as the
-required PHP version with Xdebug, phpdbg, or pcov enabled.
-
-Depending on your PHP version, you may encounter deprecated warnings, but the tests should still run correctly. You can
-verify compatibility with the appropriate PHP version
-at [PHPUnit Supported Versions](https://phpunit.de/supported-versions.html)
-and [Infection Installation](https://infection.github.io/guide/installation.html).
+For easier setup, a **Dockerfile** is provided, pre-configured with **PHP 7.4.33**, [Composer](https://getcomposer.org/)
+, and the necessary extensions like **Xdebug**. This ensures the environment is consistent and ready to run tests
+without manual configuration.
 
 ## Getting Started
 
@@ -29,19 +31,31 @@ git clone https://github.com/herminio-gurgel/target-date
 cd target-date
 ```
 
-3. **Install PHP dependencies**:
+3. Build the Docker image:
 
 ```bash
-cd composer install
+docker build -t target-date .
 ```
 
-4. **Run the unit test suite:**
+4. Run the Docker container with interactive mode and volume mounting:
+
+```bash
+docker run -v $(pwd):/app/ -it target-date bash
+```
+
+5. Install project dependencies with Composer:
+
+```bash
+composer install
+```
+
+6. Run unit tests with PHPUnit:
 
 ```bash
 composer phpunit
 ```
 
-5. **Run the mutation test suite:**
+7. Run mutation tests with Infection:
 
 ```bash
 composer infection
@@ -74,10 +88,9 @@ you have just reached `a`.
 ## **Known Issues**
 
 - One mutant escapes the test, and two others fail due to timeout.
-  These errors are false positives caused by the for loop. However, they suggest that a more efficient solution for this
-  logic exists.
+  These cases stem from the current loop implementation. A future refactor using logarithmic calculations should improve
+  performance and fix these cases.
 
 ## **Future Implementations and Fixes**
 
-- Create a Docker image to run everything pre-configured.
-- Refactor the for loop logic to use logarithms for better performance.
+- Refactor the for loop logic to use logarithms for better logic and performance.
