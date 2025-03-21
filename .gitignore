@@ -1,6 +1,6 @@
+.phpunit.cache/
+coverage/
 /vendor/
 /.idea/
-.phpunit.cache
 .phpunit.result.cache
-coverage/
 infection-log.txt
